@@ -1,0 +1,6 @@
+{
+  "name": "SENTINEL QR",
+  "description": "Landing page profesional para SENTINEL QR — sistema de control de rondas y patrullaje de seguridad con tecnología QR.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

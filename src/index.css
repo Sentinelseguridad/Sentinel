@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0A1628;
+    color: #FFFFFF;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+  background: rgba(15, 30, 54, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(26, 127, 212, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.glass-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(20, 42, 74, 0.75);
+  border-color: rgba(26, 127, 212, 0.55);
+  box-shadow: 0 16px 48px -12px rgba(26, 127, 212, 0.35);
+  transform: translateY(-4px);
+}
+
+.glass-nav {
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(26, 127, 212, 0.15);
+}
+
+/* Background grid pattern */
+.bg-grid-dots {
+  background-image: radial-gradient(rgba(26, 127, 212, 0.25) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+
+/* Glowing effects */
+.glow-blue {
+  box-shadow: 0 0 30px -5px rgba(26, 127, 212, 0.5);
+}
+
+.glow-blue-lg {
+  box-shadow: 0 0 50px 0px rgba(26, 127, 212, 0.35);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(26, 127, 212, 0.7);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A1628;
+}
+::-webkit-scrollbar-thumb {
+  background: #1A7FD4;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2591f0;
+}
+
+/* WhatsApp Pulse Animation */
+@keyframes whatsapp-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-wa-ping {
+  animation: whatsapp-ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
