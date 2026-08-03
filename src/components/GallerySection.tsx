@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, ZoomIn, Eye } from 'lucide-react';
-import { GALLERY_IMAGES } from '../constants';
+import { GALLERY_IMAGES, LOCAL_FALLBACKS } from '../constants';
 import { GalleryImage } from '../types';
 import { AnimatedSection } from './AnimatedSection';
+import { SafeImage } from './SafeImage';
 
 export const GallerySection: React.FC = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -73,11 +74,18 @@ export const GallerySection: React.FC = () => {
               >
                 {/* Image */}
                 <div className="aspect-[4/3] w-full overflow-hidden bg-[#102542] relative">
-                  <img
+                  <SafeImage
                     src={item.src}
+                    localFallback={
+                      index === 0 ? LOCAL_FALLBACKS.mobileMockup :
+                      index === 1 ? LOCAL_FALLBACKS.dashboardMockup :
+                      index === 2 ? LOCAL_FALLBACKS.qrScan :
+                      index === 3 ? LOCAL_FALLBACKS.mapRoute :
+                      index === 4 ? LOCAL_FALLBACKS.pdfReport :
+                      LOCAL_FALLBACKS.guardPatrol
+                    }
                     alt={item.alt}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
                   />
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300"></div>
@@ -141,11 +149,18 @@ export const GallerySection: React.FC = () => {
           {/* Lightbox Content Container */}
           <div className="max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center">
             <div className="relative rounded-2xl overflow-hidden glass-card border-[#1A7FD4]/40 max-h-[70vh] flex items-center justify-center bg-[#0A1628]">
-              <img
+              <SafeImage
                 src={GALLERY_IMAGES[selectedImageIndex].src}
+                localFallback={
+                  selectedImageIndex === 0 ? LOCAL_FALLBACKS.mobileMockup :
+                  selectedImageIndex === 1 ? LOCAL_FALLBACKS.dashboardMockup :
+                  selectedImageIndex === 2 ? LOCAL_FALLBACKS.qrScan :
+                  selectedImageIndex === 3 ? LOCAL_FALLBACKS.mapRoute :
+                  selectedImageIndex === 4 ? LOCAL_FALLBACKS.pdfReport :
+                  LOCAL_FALLBACKS.guardPatrol
+                }
                 alt={GALLERY_IMAGES[selectedImageIndex].alt}
                 className="max-h-[70vh] max-w-full object-contain"
-                referrerPolicy="no-referrer"
               />
             </div>
 

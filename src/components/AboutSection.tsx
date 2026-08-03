@@ -1,7 +1,8 @@
 import React from 'react';
 import { Smartphone, Monitor, FileText, CheckCircle2, Shield, Lock } from 'lucide-react';
-import { IMAGES } from '../constants';
+import { IMAGES, LOCAL_FALLBACKS } from '../constants';
 import { AnimatedSection } from './AnimatedSection';
+import { SafeImage } from './SafeImage';
 
 export const AboutSection: React.FC = () => {
   return (
@@ -102,11 +103,11 @@ export const AboutSection: React.FC = () => {
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                 {/* Outer frame container with glow */}
                 <div className="relative rounded-3xl p-3 glass-card border-[#1A7FD4]/40 glow-blue overflow-hidden group">
-                  <img
+                  <SafeImage
                     src={IMAGES.mobileMockup}
+                    localFallback={LOCAL_FALLBACKS.mobileMockup}
                     alt="Mockup de la aplicación móvil Sentinel QR"
                     className="w-full h-auto rounded-2xl object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-                    referrerPolicy="no-referrer"
                   />
                   
                   {/* Floating Overlay Badge */}
@@ -128,11 +129,11 @@ export const AboutSection: React.FC = () => {
 
                 {/* Secondary Desktop Companion Floating Mockup Card */}
                 <div className="hidden sm:block absolute -bottom-10 -right-6 w-64 p-3 rounded-2xl glass-card border-[#1A7FD4]/50 shadow-2xl animate-bounce-slow">
-                  <img
+                  <SafeImage
                     src={IMAGES.dashboardMockup}
+                    localFallback={LOCAL_FALLBACKS.dashboardMockup}
                     alt="Mockup del panel Windows Sentinel QR"
                     className="w-full h-28 object-cover rounded-xl"
-                    referrerPolicy="no-referrer"
                   />
                   <div className="mt-2 text-center">
                     <span className="font-poppins font-bold text-xs text-white">Software Windows Central</span>

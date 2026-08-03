@@ -1,16 +1,31 @@
 import { Feature, GalleryImage, TimelineStep } from './types';
+import localMobileMockup from './assets/images/sentinel_app_mockup_1785724895390.jpg';
+import localDashboardMockup from './assets/images/sentinel_dashboard_mockup_1785724911321.jpg';
+import localQrScan from './assets/images/sentinel_qr_scan_1785724925351.jpg';
+import localMapRoute from './assets/images/sentinel_map_route_1785724935644.jpg';
+import localPdfReport from './assets/images/sentinel_pdf_report_1785724946631.jpg';
+import localGuardPatrol from './assets/images/sentinel_guard_patrol_1785724956998.jpg';
 
 // Editable WhatsApp Number constant (include country code without + or spaces if preferred by wa.me link)
 export const WHATSAPP_NUMBER = "50370000000";
 
-// Image Assets generated specifically for Sentinel QR
+export const LOCAL_FALLBACKS = {
+  mobileMockup: localMobileMockup,
+  dashboardMockup: localDashboardMockup,
+  qrScan: localQrScan,
+  mapRoute: localMapRoute,
+  pdfReport: localPdfReport,
+  guardPatrol: localGuardPatrol,
+};
+
+// Image Assets generated specifically for Sentinel QR (using Google Drive high-res thumbnail links with local fallbacks)
 export const IMAGES = {
-  mobileMockup: "https://lh3.googleusercontent.com/d/1jVVDDaUUZS_QcEJ3Ab091wUxqowqyPBm",
-  dashboardMockup: "https://lh3.googleusercontent.com/d/1X5c2PHZPkDhJv9Ogg6pKwVilDlxg0iLi",
-  qrScan: "/src/assets/images/sentinel_qr_scan_1785724925351.jpg",
-  mapRoute: "https://lh3.googleusercontent.com/d/1Z9AbyotFFArFZsW5qenaE32vfppeKqhp",
-  pdfReport: "https://lh3.googleusercontent.com/d/1swul41wK5T17vSGuohEOIrs-i7K77pTW",
-  guardPatrol: "/src/assets/images/sentinel_guard_patrol_1785724956998.jpg",
+  mobileMockup: "https://drive.google.com/thumbnail?id=1jVVDDaUUZS_QcEJ3Ab091wUxqowqyPBm&sz=w1600",
+  dashboardMockup: "https://drive.google.com/thumbnail?id=1X5c2PHZPkDhJv9Ogg6pKwVilDlxg0iLi&sz=w1600",
+  qrScan: localQrScan,
+  mapRoute: "https://drive.google.com/thumbnail?id=1Z9AbyotFFArFZsW5qenaE32vfppeKqhp&sz=w1600",
+  pdfReport: "https://drive.google.com/thumbnail?id=1swul41wK5T17vSGuohEOIrs-i7K77pTW&sz=w1600",
+  guardPatrol: localGuardPatrol,
 };
 
 export const FEATURES: Feature[] = [

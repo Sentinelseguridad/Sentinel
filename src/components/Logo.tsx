@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SafeImage } from './SafeImage';
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -20,8 +21,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', showText = true, classN
 
   // Direct image URL for Google Drive file 1j2cIPNZ8H5vQa9IgDb1_Z5bRqKmiBDCz
   const driveImageId = "1j2cIPNZ8H5vQa9IgDb1_Z5bRqKmiBDCz";
-  const logoSrc = `https://lh3.googleusercontent.com/d/${driveImageId}`;
-  const fallbackSrc = `https://drive.google.com/uc?export=view&id=${driveImageId}`;
+  const primaryLogoSrc = `https://drive.google.com/thumbnail?id=${driveImageId}&sz=w800`;
 
   return (
     <div className={`inline-flex items-center gap-3 select-none ${className}`}>
@@ -31,20 +31,11 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', showText = true, classN
         <div className="absolute inset-0 bg-[#1A7FD4] opacity-30 blur-md rounded-xl animate-pulse"></div>
 
         {!imgError ? (
-          <img
-            src={logoSrc}
+          <SafeImage
+            src={primaryLogoSrc}
             alt="SENTINEL QR Logo"
             className="w-full h-full object-contain relative z-10 drop-shadow-[0_0_12px_rgba(26,127,212,0.8)] transition-transform duration-300"
-            referrerPolicy="no-referrer"
-            onError={(e) => {
-              // Try fallback Google Drive direct link first
-              const target = e.currentTarget;
-              if (target.src === logoSrc) {
-                target.src = fallbackSrc;
-              } else {
-                setImgError(true);
-              }
-            }}
+            onError={() => setImgError(true)}
           />
         ) : (
           /* SVG Fallback Icon if image fails to load */

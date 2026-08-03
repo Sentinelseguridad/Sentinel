@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Play, Shield, CheckCircle, Volume2, Maximize2, Pause, RotateCcw } from 'lucide-react';
-import { IMAGES } from '../constants';
+import { IMAGES, LOCAL_FALLBACKS } from '../constants';
 import { AnimatedSection } from './AnimatedSection';
+import { SafeImage } from './SafeImage';
 
 export const VideoSection: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -68,11 +69,11 @@ export const VideoSection: React.FC = () => {
                 className="relative aspect-video w-full bg-[#102542] cursor-pointer group overflow-hidden flex items-center justify-center"
               >
                 {/* Background Thumbnail Image */}
-                <img
+                <SafeImage
                   src={IMAGES.dashboardMockup}
+                  localFallback={LOCAL_FALLBACKS.dashboardMockup}
                   alt="Vista previa del video de demostración de Sentinel QR"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
-                  referrerPolicy="no-referrer"
                 />
 
                 {/* Dark Gradient Overlay */}

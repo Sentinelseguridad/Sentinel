@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Defensive script for third-party browser extension injection conflicts (e.g. Solana wallet extensions) -->
+    <script>
+      window.addEventListener('error', function(e) {
+        if (e.message && e.message.includes('solana')) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+    </script>
     <title>SENTINEL QR — Control de Rondas Inteligente con Tecnología QR</title>
     <meta name="description" content="SENTINEL QR — Sistema de control de rondas y patrullaje de seguridad en tiempo real. Anti-fraude QR, GPS y reportes certificados." />
     <!-- Google Fonts -->
